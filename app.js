@@ -3,6 +3,7 @@ const cors = require('cors');
 const connectDb = require('./database');
 const productsRoutes = require('./api/products/routes');
 const shopsRoutes = require('./api/shops/routes');
+const userRoutes = require("./api/users/routes")
 const app = express();
 connectDb();
 
@@ -17,6 +18,7 @@ app.use((req, res, next) => {
 });
 
 // Routes
+app.use("/api", userRoutes)
 app.use('/api/products', productsRoutes);
 app.use('/api/shops', shopsRoutes);
 app.use((err, req, res, next) => {
